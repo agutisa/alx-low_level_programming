@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -5,6 +6,7 @@
  *@n: parameter
  *Return: returns nothing
  */
+
 void print_diagonal(int n)
 {
 if (n <= 0)
