@@ -31,7 +31,7 @@ free(arr);
 for (j = 0; j <= i; j++)
 free(arr[j]);
 return (NULL);
-} 
+}
 }
 
 for (i = 0; i < height; i++)
