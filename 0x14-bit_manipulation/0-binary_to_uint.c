@@ -1,46 +1,72 @@
-#include "holberton.h"
+#include "main.h"
+#include <stdlib.h>
+
 /**
-  *binary_to_uint - change a binary to decimal number
-  *@b: the binary to change
-  *Return: the decimal number
-  */
-unsigned int binary_to_uint(const char *b)
+ * _strlen - gets the lenght of input strings
+ * @str: input string
+ * Return: len of the string
+ */
+
+int _strlen(const char *str)
 {
-unsigned int number = 0;
-unsigned int i = 0;
-if (!b)
-return (0);
-for (; b[i] != '\0'; i++)
-{
-if (b[i] != '0' && b[i] != '1')
-return (0);
-if (b[i] == '1')
-number = (number << 1) | 1;
-else if (b[i] == '0')
-number <<= 1;
+	int len = 0;
+
+	while (*str)
+	{
+		len++;
+		str++;
+	}
+	return (len);
 }
 
-return (number);
-}[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[D[D[D[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[#include "holberton.h"
 /**
-  *binary_to_uint - change a binary to decimal number
-  *@b: the binary to change
-  *Return: the decimal number
-  */
-unsigned int binary_to_uint(const char *b)
+ * _to_power - prints the power of numbers
+ * @base: base parameter
+ * @power: power parameter
+ * Return: product of two numbers
+ */
+
+int _to_power(const int base, int power)
 {
-unsigned int number = 0;
-unsigned int i = 0;
-if (!b)
-return (0);
-for (; b[i] != '\0'; i++)
-{
-if (b[i] != '0' && b[i] != '1')
-return (0);
-if (b[i] == '1')
-number = (number << 1) | 1;
-else if (b[i] == '0')
-number <<= 1;
+	int product = 1;
+
+	while (power > 1)
+	{
+		product *= base;
+		power++;
+	}
+	return (product);
 }
 
-return (number);
+/**
+ * binary_to_uint - converts a binary number to an unsigned int
+ * @b: input value
+ * Return: converted number, or 0 if b is NULL
+ */
+
+unsigned int binary_to_uint(const char *b)
+{
+	int power, num;
+
+	power = _strlen(b) - 1;
+	num = 0;
+	if (!b)
+	{
+		return (0);
+	}
+	while (*b)
+	{
+		if (!(*b == '0' || *b == '1'))
+		{
+			return (0);
+		}
+		if (*b == '1')
+		{
+			num += _to_power(2, power);
+		}
+		b++;
+		power--;
+	}
+	return (num);
+}
+
